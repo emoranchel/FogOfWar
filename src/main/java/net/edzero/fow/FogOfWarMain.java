@@ -14,10 +14,16 @@ public class FogOfWarMain {
         for (int[] thing : things) {
           thing[0] = 20;
           thing[1] = 20;
-          thing[2] = random.nextInt(10) + 5;
+          thing[2] = 20;
         }
         window.setPlayerPositions(things);
+        int i = 0;
         while (true) {
+          i++;
+          if(i==Integer.MAX_VALUE){
+            i=0;
+          }
+          //things[0][2] = (int)Math.abs(((Math.sin(((double)i)/100))*30));
           boolean first = true;
           for (int[] thing : things) {
             if (!first) {
@@ -45,7 +51,7 @@ public class FogOfWarMain {
             System.out.println(String.format("Fog calculus: %5d Paint: %5d", calculusTime, paintTime));
           }
           try {
-            Thread.sleep(25);
+            Thread.sleep(33);
           } catch (InterruptedException e) {
             e.printStackTrace();
           }
