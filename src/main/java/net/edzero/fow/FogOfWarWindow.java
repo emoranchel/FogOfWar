@@ -94,10 +94,10 @@ public class FogOfWarWindow extends JFrame {
   }
 
   public void paintFogOfWar(FogOfWar fog) {
-    fogImage = new BufferedImage(fog.getWidth() * SQUARE, fog.getHeight() * SQUARE, BufferedImage.TYPE_INT_ARGB_PRE);
+    fogImage = new BufferedImage(FogOfWarMap.getWidth() * SQUARE, FogOfWarMap.getHeight() * SQUARE, BufferedImage.TYPE_INT_ARGB_PRE);
     Graphics g = fogImage.getGraphics();
-    for (int x = 0; x < fog.getWidth(); x++) {
-      for (int y = 0; y < fog.getHeight(); y++) {
+    for (int x = 0; x < FogOfWarMap.getWidth(); x++) {
+      for (int y = 0; y < FogOfWarMap.getHeight(); y++) {
         switch (fog.getValue(x, y)) {
         case FogOfWar.NON_VISIBLE:
           g.setColor(new Color(0, 0, 0, 200));
