@@ -9,6 +9,7 @@ public class BresenhamFogOfWar implements FogOfWar {
   private int width;
   private int height;
 
+  @Override
   public void initialize(int width, int height) {
     this.width = width;
     this.height = height;
@@ -20,20 +21,26 @@ public class BresenhamFogOfWar implements FogOfWar {
     }
   }
 
+  @Override
   public void addObstacle(int x, int y) {
   }
 
+  @Override
   public void addPointOfView(int cx, int cy, int distance) {
     Geometry.circle(cx, cy, distance, (int destinationX, int destinationY) -> {
-      mark(destinationX, destinationY);
+      //mark(destinationX, destinationY);
+      Geometry.line(cx, cy, destinationX, destinationY, (int lineX, int lineY) -> {
+        reveal(lineX, lineY);
+      });
     });
   }
 
+  @Override
   public byte getValue(int x, int y) {
     return data[x][y];
   }
 
-  private void mark(int x, int y) {
+  private void reveal(int x, int y) {
     if (x >= 0 && x < width && y >= 0 && y < height) {
       data[x][y] = VISIBLE;
     }
