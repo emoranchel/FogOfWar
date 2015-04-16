@@ -7,22 +7,27 @@ public class Geometry {
     int x = 0;
     int y = radius;
     do {
-      pointMarker.mark(cx + x, cy + y);
-      pointMarker.mark(cx + x, cy - y);
-      pointMarker.mark(cx - x, cy + y);
-      pointMarker.mark(cx - x, cy - y);
-      pointMarker.mark(cx + y, cy + x);
-      pointMarker.mark(cx + y, cy - x);
-      pointMarker.mark(cx - y, cy + x);
-      pointMarker.mark(cx - y, cy - x);
+      markSegments(pointMarker, cx, x, cy, y);
       if (d < 0) {
         d += 2 * x + 1;
       } else {
         d += 2 * (x - y) + 1;
         y--;
+        markSegments(pointMarker, cx, x, cy, y);
       }
       x++;
     } while (x <= y);
+  }
+
+  private static void markSegments(PointMarker pointMarker, int cx, int x, int cy, int y) {
+    pointMarker.mark(cx + x, cy + y);
+    pointMarker.mark(cx + x, cy - y);
+    pointMarker.mark(cx - x, cy + y);
+    pointMarker.mark(cx - x, cy - y);
+    pointMarker.mark(cx + y, cy + x);
+    pointMarker.mark(cx + y, cy - x);
+    pointMarker.mark(cx - y, cy + x);
+    pointMarker.mark(cx - y, cy - x);
   }
 
   public static void line(int x1, int y1, int x2, int y2, PointMarker marker) {
