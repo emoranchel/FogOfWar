@@ -29,7 +29,7 @@ public class FogOfWarMain {
               first = false;
             }
             long calculusTime = System.currentTimeMillis();
-            String fogImpl = "net.edzero.fow.impl.SimpleFogOfWar";
+            String fogImpl = "net.edzero.fow.impl.BresenhamFogOfWar";
             if (args != null && args.length > 0) {
               fogImpl = args[0];
             }
